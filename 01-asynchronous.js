@@ -20,9 +20,10 @@
 //    second log:  6
 
 // 5. Apabila terdapat ketidak samaan antara console.log pertama dan kedua, bisakah kalian memberikan penjelasan mengapa hal tersebut bisa terjadi
-//    karena var menjadikan i sebagai variabel global dan pada console.log pertama variabel i
-//    sudah diubah valuenya dan untuk console.log kedua dijalankan ketika waktu sudah lebih dari 100 detik
+//    karena var menjadikan i sebagai variabel global dan pada console.log pertama, variabel i
+//    sudah diubah valuenya, kemudian console.log kedua dijalankan ketika waktu sudah lebih dari 100 ms
 //    maka dari itu yang tampil adalah 6 sebanyak 5 kali
+
 // 6. Perbaiki baris kode dibawah sehingga ia akan menampilkan angka yang sama
 for (let i = 1; i<=5; i++) {
     console.log("first log: ", i); // 01 - Pertama
