@@ -78,17 +78,57 @@ class Student {
       this.email = email;
       this.courseOfferings = [];
     }
+
+    getCourseIndex(course){
+        return this.courseOfferings.findIndex((courseOffering) => {
+            return courseOffering.course.getSubject() === course.getSubject();
+        });
+    }
     
-    takeNewCourse(....) { .... }
+    takeNewCourse(course) {
+        this.courseOfferings.push(new CourseOffering(course));
+        course.decreaseQuota();
+    }
     
-    takeATest(....) { .... }
+    takeATest(course) {
+        const courseIndex = this.getCourseIndex(course);
+        if (this.courseOfferings[courseIndex].attendance >= course.getAttendance()) {
+            this.courseOfferings[courseIndex].grade = Math.floor(Math.random() * 100);
+        } else {
+            console.log("please fill your absen");
+        }
+    }
     
-    courseAttendance(....) { .... }
+    courseAttendance(course) {
+        const courseIndex = this.getCourseIndex(course);
+        this.courseOfferings[courseIndex].attendance++;
+    }
   }
   
-  class CourseOffering { .... }
+  class CourseOffering {
+    constructor(course) {
+        this.course = course;
+        this.attendance = 0;
+        this.grade = 0;
+    }
+  }
   
-  class Course { .... }
+  class Course {
+    constructor(subject, quota, attendance) {
+        this.subject = subject;
+        this.quota = quota;
+        this.attendance = attendance;
+    }
+    getSubject() {
+        return this.subject;
+    }
+    getAttendance() {
+        return this.attendance;
+    }
+    decreaseQuota() {
+        this.quota--;
+    }
+  }
   
   
   const biology = new Course("biology", 10, 3);
